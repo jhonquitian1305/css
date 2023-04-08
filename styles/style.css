@@ -1,0 +1,292 @@
+/* Mala práctica porque son bloqueantes a la hora que se lee*/
+@import url("otra-hoja.css");
+
+html{
+    scroll-behavior: smooth;
+}
+
+h1{
+    color: orangered;
+    background-color: black;
+}
+
+p{
+    color: midnightblue;
+}
+
+/* usar id es antipatrón */
+#parrafo-dos{
+    background-color: skyblue;
+}
+
+/* Las clases permiten reutilizar código CSS*/
+
+.bg-skyblue{
+    background-color: skyblue;
+}
+
+.bg-steelblue{
+    background-color: steelblue;
+}
+
+.text-20{
+    font-size: 20px;
+}
+
+.text-32{
+    font-size: 32px;
+}
+
+.text-white{
+    color: white;
+}
+
+/* Selectores de hijos */
+
+.hijos-directos > li{
+    background-color: thistle;
+}
+
+.hijos-descendientes b{
+    background-color: thistle;
+}
+
+/* Los selectores de hermanos van a aplicar a los elementos que son hermanos y que estén por debajo del elemento de referencia */
+
+.hermanos-general ~ li{
+    background-color: thistle;
+}
+
+.hermanos-adyacentes + li{
+    background-color: thistle;
+}
+
+/* Selectores de atributos */
+
+.selectores-atributos a[href]{
+    color: orangered;
+}
+
+.selectores-atributos a[target="_blank"]{
+    font-weight: bold;
+}
+
+/* El * aplica el estilo si contiene el texto en cuestión */
+.selectores-atributos a[href*="jonmircha"]{
+    font-size: 24px;
+}
+
+/* El comodín del ^ aplica el estilo si contiene el texto en cuestión al inicio */
+.selectores-atributos a[href^="http://"]{
+    text-decoration: none;
+}
+
+/* El comodín del $ aplica el estilo si contiene el texto en cuestión al final */
+.selectores-atributos a[href$= ".com"]{
+    background-color: black;
+}
+
+/* El comodín de la ~ aplica el estilo si contiene el texto en cuestión en una lista separada por espacios */
+.selectores-atributos a[class~="cursos"]{
+    background-color: midnightblue;
+}
+
+/* El comodín | aplica el estilo si contiene el texto en cuestión en una lista separada por espacios y que después del texto en cuestión tenga un guion medio */
+.selectores-atributos a[class|="menu"]{
+    font-style: italic;
+}
+
+/* Selector Universal */
+
+* {
+    font-family: sans-serif;
+}
+
+.selector-universal * {
+    font-size: 24px;
+}
+
+.form-pseudoclases *:required{
+    border-color: yellow;
+}
+
+.form-pseudoclases *:valid{
+    border-color: green;
+}
+
+.form-pseudoclases *:invalid{
+    border-color: red;
+}
+
+.form-pseudoclases *:focus{
+    background-color: skyblue;
+}
+
+.form-pseudoclases *:disabled{
+    background-color: pink;
+}
+
+.menu-pseudoclases a:visited{
+    color: olive;
+}
+
+.menu-pseudoclases a:hover{
+    color: orange;
+}
+
+#temario-css:target{
+    background-color: lightgreen;
+}
+
+.lista-pseudoclases li:first-child{
+    color: green;
+}
+
+.lista-pseudoclases li:last-child{
+    color: violet;
+}
+
+.lista-pseudoclases li:nth-child(5){
+    color: navy;
+}
+
+.lista-pseudoclases li:nth-child(4n){
+    font-size: 20px;
+}
+
+.lista-pseudoclases li:nth-child(even){
+    background-color: yellow;
+}
+
+.lista-pseudoclases li:nth-child(odd){
+    background-color: orange;
+}
+
+.articulo-pseudoclases p:first-of-type{
+    background-color: pink;
+}
+
+.articulo-pseudoclases p:last-of-type{
+    background-color: violet;
+}
+
+.articulo-pseudoclases p:nth-of-type(3){
+    background-color: fuchsia;
+}
+
+.articulo-pseudoclases *:not(p){
+    background-color: beige;
+}
+
+.saga-geminis::before{
+    content: "🤼";
+}
+
+.saga-geminis::after{
+    content: "❇️";
+}
+
+.saga-precio::before{
+    content: "$";
+    font-weight: bold;
+}
+
+.saga-precio::after{
+    content: "USD";
+    font-weight: bold;
+}
+
+.p-pseudoelementos::first-letter{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.p-pseudoelementos::first-line{
+    color: coral;
+}
+
+.p-pseudoelementos::selection{
+    color: greenyellow;
+    background-color: black;
+}
+
+.input-pseudoelementos::placeholder{
+    color: green;
+}
+
+/* Agrupar Selectores */
+.form-agrupar-selectores input[type="text"],
+.form-agrupar-selectores input[type="email"],
+.form-agrupar-selectores textarea {
+    border-color: yellow;
+    border-width: 2px;
+    border-style: dashed;
+    background-color: black;
+    font-size: 20px;
+    display: block;
+    width: 300px;
+}
+
+/* 
+El algoritmo de CSS: Es la forma que el navegador aplica los estilos al documento HTML. Es vital entender este concepto para saber cómo se aplican y en algunas ocasiones se sobreescriben las reglas CSS.
+
+    1) La Cascada.
+    2) La Especificidad.
+    3) La Herencia.
+
+    La Cascada es el mecanismo en que el navegador aplica los estilos y toma en cuenta lo siguiente en el siguiente orden:
+    1) El origen del código:
+        - El User Agent (los estilos por defecto del navegador)
+        - Personalizaciones del usuario
+        - Los estilos del autor
+    2) La especificidad del selector: es el peso que tiene un selector cuando hay conflicto de estilos. Se calcula de la siguiente forma:
+        Etiquetas y pseudoelementos -> 0, 0, 0, 1
+        Clases, atributos y pseudo clases -> 0, 0, 1, 0
+        Identificadores -> 0, 1, 0, 0
+        Estilos en Línea -> 1, 0, 0, 0
+        !important -> Rompe la especificidad
+
+    3) La Herencia es la capacidad de un selector de obtener(heredar) los valores de sus ancestros más cercanos, para aplicarla se usa el valor inherit, si queremos evitarla podemos asignar otro valor o inicializar la propiedad en cuestión con el valor initial
+
+*/
+
+/* Ejemplos de cascada y especificidad */
+
+blockquote#cita-marco.cita-marco{
+    background-color: lightsteelblue;
+}
+
+blockquote {
+    background-color: burlywood;
+}
+
+#cita-marco{
+    background-color: lightgreen;
+}
+
+blockquote.cita-marco{
+    background-color: tomato;
+}
+
+.cita-marco{
+    background-color: cornflowerblue;
+}
+
+blockquote#cita-marco{
+    background-color: lightsalmon;
+}
+
+/* Herencia */
+
+.cita-marco{
+    background-color: moccasin !important;    
+    background-color: darkorange !important;
+    font-size: 32px;
+    border-style: dotted;
+    border-color: red;
+}
+
+.cita-marco cite{
+    background-color: pink;
+    background-color: inherit;
+}

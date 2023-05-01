@@ -1,0 +1,147 @@
+/* 
+1. Absolutas (su valor no cambia, son unidades del mundo real)
+    1. pc
+    2. cm
+    3. mm
+    4. in
+    5. Q
+    6. pt(1/72in)
+    7. px(1/96in)
+2. Relativas(su valor es relativo a un contexto)
+    1. tamaño de la fuente
+        1. em → basada en la anchura de la “m” de la fuente del elemento
+        2. rem → basada en la anchura de la “m” de la fuente del elemento raíz (html)
+        3. ex → basada en la altura de la “x” de la fuente del elemento
+        4. ch → basada en la anchura del “0” de la fuente del elemento
+    2. tamaño del contenedor
+        1. porcentaje (%)
+    3. tamaño del viewport
+        1. vw → ancho del viewport van de 1 a 100
+        2. vh → alto del viewport van de 1 a 100
+        3. vmax → entre vw y vh toma el que tenga mayor valor
+        4. vmin → entre vw y vh toma el que tenga menor valor
+*/
+
+html{
+    box-sizing: border-box;
+    font-size: 20px;
+    font-size: 32px;
+    font-size: 16px;
+    background-color: black;;
+}
+
+body {
+    margin: 0;
+    background-color: azure;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+.pixels {
+    background-color: cadetblue;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    font-size: 25px;
+    border: thick solid rebeccapurple;
+}
+
+.ems {
+    background-color: cadetblue;
+    font-size: 24px;
+    padding: 1em 0.5em;
+    border: thick solid rebeccapurple;
+}
+
+.em-child {
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5em;
+    padding: 1em;
+    font-size: 2em;
+}
+
+.rems {
+    background-color: cadetblue;
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem;
+    border: thick solid rebeccapurple;
+}
+
+.rem-child {
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5rem;
+    font-size: 2rem;
+}
+
+.exs {
+    background-color: cadetblue;
+    font-size: 24px;
+    padding: 1ex 0.5ex;
+    border: thick solid rebeccapurple;
+}
+
+.ex-child {
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5ex;
+    padding: 1ex;
+    font-size: 2ex;
+}
+
+.chs {
+    background-color: cadetblue;
+    width: 10ch;
+}
+
+.percentages {
+    background-color: darkkhaki;
+    padding: 5%;
+    width: 80%;
+    font-size: 100%;
+    height: 100%;
+    margin: 5%;
+}
+
+.height-parent {
+    background-color: aqua;
+    width: 500px;
+    height: 500px;
+}
+
+.height-child {
+    background-color: blue;
+    width: 50%;
+    height: 100%;
+}
+
+.viewport {
+    background-color: darkcyan;
+    width: 50vw;
+    /* La etiqueta body tiene márgenes por defecto y las barras de scroll del navegador también forman parte del viewport */
+    width: 100%;
+    width: 100vw;
+    height: 50vh;
+    height: 100vh;
+    font-size: 5vw;
+    padding: 2vh 2vw;
+}
+
+.vmin {
+    background-color: darksalmon;
+    border: thick solid cyan;
+    width: 50vmax;
+    height: 50vmin;
+}
+
+.vmax {
+    background-color: darksalmon;
+    border: thick solid cyan;
+    width: 50vmin;
+    height: 50vmax;
+}
